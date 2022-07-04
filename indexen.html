@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>Jeongle</title>
+    </head>
+    <style>
+
+
+
+    *{
+        margin: 0;
+        border-style: border-box;
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background-color: #fff;
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+    }
+
+    ul{
+        padding-top: 10px;
+        list-style-type: none;
+        padding-right: 10px;
+    }
+
+    li{
+        display: inline;
+        font-size: 0.9em;
+    }
+
+    #header{
+        text-align: right;
+    }
+
+    .header-list{
+        text-decoration: none;
+        color: black;
+    }
+
+    img{
+        height: 92px;
+        width: 272px;
+        margin-bottom: 20px;
+    }
+
+    #logo{
+        padding-top: 130px;
+        text-align: center;
+    }
+
+    #search-box{
+        text-align: center;
+    }
+
+    input{
+        width: 550px;
+        height: 50px;
+        border: solid 0.5px rgba(0,0,0,.1);
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+
+    .button{
+        cursor: pointer;
+        line-height: 35px;
+        height: 36px;
+        border: 1px solid #f3f3f3;
+        border-radius: 2px;
+        padding: 0px 16px;
+        margin-right: 10px;
+        padding-bottom: 30px;
+        font-weight: 550;
+        font-size: 0.8em;
+        background-color: #f2f2f2;
+        color: #808080;
+        overflow: hidden;
+    }
+
+    a{
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    p{
+        font-size: 0.9em;
+    }
+
+
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        color: rgba(0, 0, 0, 0.54);
+        width: 100%;
+        margin: 0 27px 0 0;
+        padding-right: 27px;
+    }
+
+    .bottombars {
+        height: 41px;
+        background-color: #f2f2f2;
+        padding-left: 1px;
+        border-bottom-color: rgb(228, 228, 228);
+        border-bottom-style: solid;
+        border-bottom-width:1px;
+        line-height: 30px;
+        float:left;
+        width: 100%;
+    }
+
+    .bottomlinks {
+        padding-left: 15px;
+        color: rgba(0, 0, 0, 0.59);
+    }
+
+    .bottomrightlinks {
+        padding-right: 27px;
+        color: rgba(0, 0, 0, 0.59);
+    }
+
+    .bot-left {
+        display: inline;
+        float: left;
+    }
+
+
+    .bot-right {
+        display: inline;
+        float: right;
+    }
+</style>
+
+    <body>
+        <header id="header">
+            <ul>
+                <li>10927 Jeong Ji Min</li>
+            </ul>
+        </header>
+        <div id="logo"><img src="https://i.ibb.co/xJLC8d8/festisite-google.png" alt="festisite-google" border="0"></div>
+        <div id="search-box">
+            <form action="javascript:post();">
+                <input placeholder="  Search..." class="search" type="search">
+                <br>
+                <button class="button" type="button" onclick="post();">Jeongle Search</button>
+                <button class="button" type="button" onclick="window.location.href = 'info.html';">Site Information</button>
+            </form>
+            <br>
+            <p>Change Language: <a href="index.html">한국어</a><a href="indexjp.html"> 日本語</a></p>
+        </div>
+        <div class="bottom">
+            <div class="bottombars">
+                <ul>
+                    <li><a href="#" class="bottomlinks" style="font-size: 16px;">USA</a></li>
+                </ul>
+            </div>
+            <div class="bottombars">
+                <ul>
+                    <li style="font-size: 15px;" class="bot-left"><a href="#"  class="bottomlinks">No maintenance.</a></li>
+                </ul>
+            </div>
+        </div>            
+    </body>
+    <script>
+        function post() {
+            let search = document.querySelector("#search-box > form > input").value; 
+            localStorage.setItem('text',search);
+            window.location.href = 'search.html';
+        }
+        
+    </script>
+</html>

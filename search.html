@@ -1,0 +1,173 @@
+<style>
+
+
+*{
+        margin: 0;
+        border-style: border-box;
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background-color: #fff;
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+    }
+
+    ul{
+        padding-top: 10px;
+        list-style-type: none;
+        padding-right: 10px;
+    }
+
+    li{
+        display: inline;
+        font-size: 0.9em;
+    }
+
+    #header{
+        text-align: left;
+    }
+
+    .header-list{
+        text-decoration: none;
+        color: black;
+    }
+
+    img{
+        height: 92px;
+        width: 272px;
+        margin-bottom: 20px;
+    }
+
+    #logo{
+        padding-top: 130px;
+        text-align: center;
+    }
+
+    #search-box{
+        text-align: center;
+    }
+
+    input{
+        width: 550px;
+        height: 50px;
+        border: solid 0.5px rgba(0,0,0,.1);
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+
+    .button{
+        cursor: pointer;
+        line-height: 35px;
+        height: 36px;
+        border: 1px solid #f3f3f3;
+        border-radius: 2px;
+        padding: 0px 16px;
+        margin-right: 10px;
+        padding-bottom: 30px;
+        font-weight: 550;
+        font-size: 0.8em;
+        background-color: #f2f2f2;
+        color: #808080;
+        overflow: hidden;
+    }
+
+    a{
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    p{
+        font-size: 0.9em;
+    }
+
+
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        color: rgba(0, 0, 0, 0.54);
+        width: 100%;
+        margin: 0 27px 0 0;
+        padding-right: 27px;
+    }
+
+    .bottombars {
+        height: 41px;
+        background-color: #f2f2f2;
+        padding-left: 1px;
+        border-bottom-color: rgb(228, 228, 228);
+        border-bottom-style: solid;
+        border-bottom-width:1px;
+        line-height: 30px;
+        float:left;
+        width: 100%;
+    }
+
+    .bottomlinks {
+        padding-left: 15px;
+        color: rgba(0, 0, 0, 0.59);
+    }
+
+    .bottomrightlinks {
+        padding-right: 27px;
+        color: rgba(0, 0, 0, 0.59);
+    }
+
+    .bot-left {
+        display: inline;
+        float: left;
+    }
+
+
+    .bot-right {
+        display: inline;
+        float: right;
+    }
+
+
+</style>
+<body>
+    <header id="header">
+        <ul>
+            <br><br><img style="height: 80;" src="https://i.ibb.co/xJLC8d8/festisite-google.png" alt="festisite-google" border="0">
+            <br><a href="index.html">다시 검색하기</a>
+            <br><br><h2 id="result"></h2>
+        </ul>
+    </header><br><br>
+    <ul id="searchresult" style="line-height:60%;">
+    </ul>
+    <div class="bottom">
+        <div class="bottombars">
+            <ul>
+                <li><a href="#" class="bottomlinks" style="font-size: 16px;">대한민국</a></li>
+            </ul>
+        </div>
+        <div class="bottombars">
+            <ul>
+                <li style="font-size: 15px;" class="bot-left"><a href="#"  class="bottomlinks">학교 발표용 사이트입니다. 더 이상 개발을 유지하지 않습니다.</a></li>
+            </ul>
+        </div>
+    </div>      
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+let json = [
+    { "url": "https://solteo.hs.kr/", "title": "솔터고등학교", "des": "솔터고등학교 홈페이지" }, 
+    { "url": "https://solteo.hs.kr/board.list?mcode=1110", "title": "솔터고등학교 - 공지사항", "des": "솔터고등학교 공지사항 페이지" }, 
+    { "url": "https://ko.wikipedia.org/wiki/%EC%86%94%ED%84%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90", "title": "솔터고등학교 - 위키백과", "des": "솔터고등학교(솔터高等學校)는 경기도 김포시 마산동에 있는 공립 고등학교이다." }, 
+    { "url": "https://namu.wiki/w/%EC%86%94%ED%84%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90", "title": "솔터고등학교 - 나무위키", "des": "경기도 김포시 마산동에 있는 공립 고등학교." }, 
+    { "url": "https://naver.com/", "title": "네이버", "des": "네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요." }, 
+    { "url": "https://youtube.com/", "title": "유튜브", "des": "YouTube에서 마음에 드는 동영상과 음악을 감상하고, 직접 만든 콘텐츠를 업로드하여 친구, 가족뿐 아니라 전 세계 사람들과 콘텐츠를 공유할 수 있습니다." }
+]
+if(localStorage.getItem('text')){
+ var lastData = localStorage.getItem('text')
+}
+
+  console.log(json.filter(function(e){ return e.title.includes(lastData); }));
+  document.getElementById('result').innerHTML=lastData + "에 대한 검색결과";
+  document.getElementById('searchresult').innerHTML="<a href='" + json.filter(function(e){ return e.title.includes(lastData); })[0].url + "'><h3>" + json.filter(function(e){ return e.title.includes(lastData); })[0].title + "</h3></a>" + "<br>" + "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[0].url + "</h5>" + "<br>" +  "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[0].des + "</h5>";
+  document.getElementById('searchresult').innerHTML+="<br><br><br><br><a href='" + json.filter(function(e){ return e.title.includes(lastData); })[1].url + "'><h3>" + json.filter(function(e){ return e.title.includes(lastData); })[1].title + "</h3></a>" + "<br>" + "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[1].url + "</h5>" + "<br>" +  "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[1].des + "</h5>"; 
+  document.getElementById('searchresult').innerHTML+="<br><br><br><br><a href='" + json.filter(function(e){ return e.title.includes(lastData); })[2].url + "'><h3>" + json.filter(function(e){ return e.title.includes(lastData); })[2].title + "</h3></a>" + "<br>" + "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[2].url + "</h5>" + "<br>" +  "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[2].des + "</h5>"; 
+  document.getElementById('searchresult').innerHTML+="<br><br><br><br><a href='" + json.filter(function(e){ return e.title.includes(lastData); })[1].url + "'><h3>" + json.filter(function(e){ return e.title.includes(lastData); })[3].title + "</h3></a>" + "<br>" + "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[3].url + "</h5>" + "<br>" +  "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[3].des + "</h5>"; 
+  document.getElementById('searchresult').innerHTML+="<br><br><br><br><a href='" + json.filter(function(e){ return e.title.includes(lastData); })[2].url + "'><h3>" + json.filter(function(e){ return e.title.includes(lastData); })[4].title + "</h3></a>" + "<br>" + "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[4].url + "</h5>" + "<br>" +  "<h5>" + json.filter(function(e){ return e.title.includes(lastData); })[4].des + "</h5>";
+
+</script>
